@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+ 
+  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+  font-family: sans-serif;
+  min-height: 100vh;
+  color: #fff;
+}
+header {
+  font-size: 1.5rem;
+}
+.container {
+  
+  top: -5%;
+  left: 20%;
+  
+}
+.navbar{
+  width:100%;
+  height: 60px;
+  border: none;
+  display: flex;
+  font-size: 40px;
+  
+  align-items: center;
+  justify-content:space-between;
+
+  color: #fff;
+}
+table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  th {
+    background-color: #558f56;
+  }
+}
+
+tbody {
+  tr {
+    &:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+  }
+  td {
+    position: relative;
+    &:hover {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        background-color: rgba(255,255,255,0.2);
+        z-index: -1;
+      }
+    }
+  }
+}
+header,
+form {
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form input,
+form button {
+  padding: 0.5rem;
+  border: none;
+  background: white;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form button {
+  width: 5rem;
+  color: rgb(130, 188, 49);
+  background: white;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+form button:hover {
+  color: white;
+  background: rgb(108, 158, 47);
+}
+
+.todo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+.todo {
+  background: white;
+  color: black;
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.todo li {
+  flex: 1;
+}
+.trash-btn,
+.complete-btn {
+  color: white;
+  background: #ff6f47;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  padding: 1rem;
+}
+.inputBox{
+  padding-bottom: 10%;
+}
+.complete-btn {
+  background: rgb(83, 196, 83);
+}
+.fa-check,
+.fa-trash {
+  pointer-events: none;
+}
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.fall {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+/* select button filter button */
+select {
+  -web-kit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  width: 10rem;
+  cursor: pointer;
+  color: #ff6f47;
+}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.select:after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ff6f47;
+  color: white;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.submit-btn{
+    background-color: #c66926;
+    color:#fff;
+    border:none;
+    border-radius:15px ;
+
+    /* full width as of the sign up container */
+    width:10%;
+    display:block;
+    padding: 15px 25px;
+    margin:15px auto;
+    font-size: 13px;
+    font-weight:bold;
+
+    /* when we hover on sign up button cursor becomes of the shape of a pointer */
+    cursor:pointer;
+    transition: 0.3s ease;
+}
+
+.select:hover::after {
+  background: white;
+  color: #ff6f47;
+}
+</style>
+   
+  </head>
+  <body>
+    <div class="navbar">
+      <p>Welcome <%=username%></p>
+      <a href="/logout" style="text-decoration: none;color: #fff;">Logout</a>
+    </div>
+    
+
+    <header>
+      <h1>To do List</h1>
+    </header>
+    
+    <div class="inputBox">
+    <form action="/task" method="post">
+      <input type="text" class='todo-inputs' name="taskDes"><br>
+      <!-- <button class='todo-button'>
+        <i class='fas fa-plus-square'></i>
+      </button> -->
+     <br><br>
+      <button  >Add task</button>
+      
+    </form>
+    
+  </div>
+ 
+    <div class="todo-container" style="margin-top: -110px;padding-bottom: 20px;">
+      <ul class="todo-list">
+       
+        <div class="container">
+          <table>
+            <thead>
+              <tr>
+               
+                <th>Task</th>
+                <th>Time</th>
+                <th>Delete</th>
+                <th>Update</th>
+                
+
+                
+              </tr>
+            </thead>
+            <tbody>
+
+
+                <% prevTasks.forEach(task => { %>
+                  <tr>
+                    
+                    <td class="description-cell"><%= task.description %></td>
+                    <td><%= task.time %></td>
+
+                    <td class="button-cell"><button class="deleteButton" data-taskid=<%= task.taskid %>><i class="fa fa-trash" style="font-size:20px;"></i></button></td>
+                    <td class="button-cell"><button class="updateButton" data-taskid=<%= task.taskid %>><i class="fa fa-edit" style="font-size:20px;"></i></button></td>
+                  </tr>
+                <% }); %>
+                
+
+              
+              
+            </tbody>
+          </table>
+        </div>
+      </ul>
+    </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      const deleteButtons = document.querySelectorAll(".deleteButton");
+      deleteButtons.forEach(button => {
+        button.addEventListener("click", async function() {
+          console.log(2);
+          const taskId = button.getAttribute("data-taskid");
+          console.log(taskId);1
+          try {
+            const response = await fetch(`/tasks/${taskId}`, {
+              method: 'delete',
+              headers: { 'Content-Type': 'application/json' },
+             
+            });
+            console.log(567);
+            if (!response.ok) {
+              throw new Error(`Error deleting task: ${response.statusText}`);
+            }
+            // Handle successful deletion
+            console.log("Task deleted successfully!");
+            // Optionally, you can remove the row from the table on successful deletion
+            const row = button.closest("tr");
+            row.parentNode.removeChild(row);
+          } catch (error) {
+            console.error("Error deleting task:", error);
+            // Handle errors appropriately
+          }
+        });
+      });
+    });
+   
+    document.addEventListener("DOMContentLoaded", function() {
+  const updateButtons = document.querySelectorAll(".updateButton"); // Assuming class name is "updateButton"
+
+  updateButtons.forEach(button => {
+    button.addEventListener("click", async function() {
+      console.log(2);
+      let updatedValue = prompt("Please enter your update for this task");
+
+      const taskId = button.getAttribute("data-taskid");
+      console.log(taskId);
+
+      const jsonData = JSON.stringify({ description: updatedValue }); // Assuming "updatedValue" is a property in the update data
+      console.log("jsonData:", jsonData); 
+      try {
+        const response = await fetch(`/tasks/${taskId}`, {
+          method: 'put',
+          headers: { 'Content-Type': 'application/json' },
+          body:jsonData,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error updating task: ${response.statusText}`);
+        }
+
+        // Handle successful update
+        console.log("Task updated successfully!");
+
+        // Update UI with the updated task information (optional)
+        const updatedTaskData = await response.json(); // Parse the JSON response
+        const taskElement = button.closest("tr"); // Assuming the button is within a table row
+        // Update the task element content based on updatedTaskData (replace with your specific logic)
+        taskElement.querySelector(".description-cell").textContent = `${updatedValue}` // Example update
+
+        // Optional row removal (if applicable)
+        // row.parentNode.removeChild(row); // Remove row on successful update
+      } catch (error) {
+        console.error("Error updating task:", error);
+        // Handle errors appropriately (e.g., display error message to user)
+      }
+    });
+  });
+});
+
+   
+  </script>
+  </body>
+ 
+</html>

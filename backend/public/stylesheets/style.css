@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Nunito:wght@300&family=Poppins:wght@100;500;700&display=swap');
+ /* margin
+       border
+         padding
+              512 * 512(main content) */
+
+/* padding: top right bottom left 
+OR          x(top/bottom)   y(left/right)
+*/
+/* * --> universal selector */
+*{
+    box-sizing: border-box;
+    /* the content will adjust itself according to the padding */
+    /* The width and height properties include content, padding, and border, but not the margin. */
+}
+body{
+    min-height: 100vh;
+    display: flex;
+
+    /* to center the box horizontally */
+    align-items:center;
+
+    /*to move the box to the center vertically*/
+    justify-content: center;
+
+    /* to create a transition of colors from top to bottom where starting color would be #97ebe1
+    rgba--> red green blue alpha(transparency)
+    0.70 means 70% opaque */
+  background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+   
+
+    /* google-fonts */
+    font-family: 'Arimo', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+
+}
+.form-container{
+    background-color:#222;
+    height:550px;
+    width:350px;
+    
+    /* to curve the corners a lil bit */
+    border-radius: 15px;
+
+    /* to hide the content that overflows the box and no scrollbars to view that content */
+    overflow:hidden;
+
+    /* 20px-->blur radius(less-->less bluriness)
+    offset-x(||) and offset-y(=) -->to give shadow 
+    if positive---->bottom shadow
+    negative ----> top shadow
+    box-shadow: offset-x offset-y blur-radius spread-radius(how much area we want it to cover) color */
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+
+    /* to set the position of signup box */
+    /* relative to its normal position and will leave a gap at its normal position */
+    position:relative;
+    
+}
+
+/* css properties for input boxes */
+/* to insert pseudo elements after form-container's actual content  
+1st actual content
+2nd pseudo element will be displayed(behind actual)
+*/
+.form-container::after{
+
+    /* generate empty-boxes */
+    content:'';
+
+    /* position of bg-img */
+    position:absolute;
+
+    /* set the size of the image */
+    /* text entered will cover the entire input box */
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-image: linear-gradient(-225deg, #DFFFCD 0%, #90F9C4 48%, #39F3BB 100%);
+
+    /* starting position of background image */
+    background-position:right bottom;
+    background-size:cover;
+    opacity:0.8;
+}
+body {
+  background-color: rgb(48, 48, 48) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-app {
+  width: 800px;
+  height: 600px;
+  border-radius: 15px;
+  margin: 80px 0px;
+}
+.input-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  height: 30px;
+}
+.input-section input[type="text"] {
+  flex-grow: 1;
+  padding: 16px;
+  border: none;
+  background-color: rgb(33, 33, 33);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+.input-section input[type="text"]::placeholder {
+  color: #ddd;
+}
+.input-section input[type="text"]:focus {
+  outline: none;
+  background-color: #555;
+}
+.input-section button {
+  margin-left: 10px;
+  padding: 16px 23px;
+  border: none;
+  background-color: rgb(33, 33, 33);
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+.input-section button:hover {
+  outline: none;
+  background-color: #555;
+}
+.input-section button[type="text"]::placeholder {
+  color: #ddd;
+}
+.add {
+  margin-right: 10px;
+}
+.todos {
+  width: 100%;
+  height: 500px;
+  margin-top: 50px;
+  padding: 10px 5px;
+  background-color: rgb(33, 33, 33);
+  border-radius: 30px;
+  -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-list li {
+  display: flex;
+  align-items: center;
+  padding: 7px 30px;
+  background-color: rgb(38 37 37);
+  border-radius: 80px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.todo-list li span {
+  margin-left: 10px;
+  color: #fff;
+  /* font-size: 13px */
+}
+.delete-button {
+  padding: 3px;
+  border-radius: 80px;
+}
+.delete-button :hover {
+  outline: none;
+  background-color: #555;
+}
+.todo-text {
+  color: #fff !important;
+  margin-right: auto;
+  font-size: 16px !important;
+}
+.span-button {
+  margin-left: auto;
+  display: block;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px !important;
+
+}
+.span-button:hover {
+  background-color: rgb(52, 53, 53);
+  border-radius: 80px;
+  /* padding: 4px 6px; */
+  color: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+.face {
+  width: 100px;
+  z-index: 100;
+  height: 100px;
+  /* margin: auto; */
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 30%;
+}
+
+.not-found{
+  color: #fff;
+  top: 60%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 30%;
+}
+
+.signup-container{
+
+    /* z-index only work on position:relative absolute fixed or sticky not on static position
+    z index basically sets the priority of elements
+    z index value >> comes first
+    z-index only affects elements that are siblings or nested within the same stacking context
+    */
+    z-index:5;
+
+    top:5%;
+
+    /* move from right to left
+    to centre the element horizontally beacause vertically is given 0
+    it means that it will move 50% to left and 0% to bottom */
+    transform:translate(-50%,0);
+    
+    /* relative to its first parent */
+    position: absolute;
+    top: 50%;
+    left:50%;
+
+    /* to set the position of elements horizontally and vertically after the execution of transition effect */
+    transform:translate(-50%, -50%);
+    width:65%;
+
+    /* ease (ease-in + ease-out)--> starts slow  - accelerates in middle - ends slow 
+       linear --> constant speed
+       ease- in --> starts slow
+       ease -out --> ends slow
+       cubic bezier --> to set the transition speed manually
+    */
+    transition:0.3s ease;
+}
+.form-container .form-title{
+    color:#fff;
+    text-align:center;
+    font-size: 28px;
+}
+
+
+.form-container .form-holder{
+    background-color: #fff;
+    border-radius:15px;
+    overflow:hidden;
+
+    /* margin from sign up heading */
+    margin-top:50px;
+    transition:0.3s ease;
+}
+.form-container .form-holder input{
+    border:0;
+    outline:none;
+    box-shadow:none;
+    display:block;
+    height:45px;
+    padding:8px 15;
+
+    /* if we want the border only at bottom of the box */
+    border-bottom: 1px solid #eee;
+
+    width:100%;
+    font-size:12px;
+}
+.form-container .form-holder input:last-child{
+
+    /* to remove the bottom border from the password field */
+    border-bottom:0;
+
+}
+.form-container .form-holder input::placeholder{
+    color:rgba(0,0,0,0.4);
+}
+.form-container .submit-btn{
+    background-color: #5bc626;
+    color:#fff;
+    border:none;
+    border-radius:15px ;
+
+    /* full width as of the sign up container */
+    width:100%;
+    display:block;
+    padding: 15px 45px;
+    margin:15px auto;
+    font-size: 13px;
+    font-weight:bold;
+
+    /* when we hover on sign up button cursor becomes of the shape of a pointer */
+    cursor:pointer;
+    transition: 0.3s ease;
+}
+.form-container .submit-btn:hover{
+    background-color: #116907;
+}
+
+/* how to write div with 2 classes (no space)*/
+.form-container .signup-container.slide-up{
+
+    /* only 5% down from top */
+    top:5%;
+
+    /* move from right to left
+    to centre the element horizontally beacause vertically is given 0
+    it means that it will move 50% to left and 0% to bottom */
+    transform:translate(-50%,0);
+}
+.form-container.slide-up .form-holder, .form-container.slide-up .submit-btn{
+    
+    /* to make the image light */
+    opacity:0;
+
+    visibility:hidden;
+}
+.form-container .slide-up .form-title{
+    font-size:16px;
+}
+.login-container{
+    background: #fff;
+    z-index:5;
+    position:absolute;
+    top:20%;
+    left:0;
+    bottom:0;
+    right:0;
+    transition: 0.3s ease;
+}
+
+/* to insert pseudo elements before login-container's actual content 
+1st pseudo element will be displayed
+2nd actual content(behind pseudo)
+*/
+.login-container::before{
+    content:'';
+    position:absolute;
+    background-color: #fff;
+    width:200%;
+    height:250px;
+    border-radius: 50%;
+    left:50%;
+    transform: translate(-50%,0);
+    top:-20px;
+    z-index:4;
+    transition:0.3s ease;
+}
+
+/* when sign up page is being shown */
+.form-container .login-container.slide-up{
+    top:90%;
+}
+.form-container .login-wrapper{
+    z-index:5;
+    position:absolute;
+    top:45%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:165px;
+    text-align:center;
+    transition:0.3s ease;
+}
+.form-container .login-container.slide-up .login-wrapper{
+    top:5%;
+    transform: translate(-50%,0);
+}
+
+.form-container .login-container.slide-up .form-title{
+    margin:0;
+}
+.form-container .login-container .form-title{
+    color:#222;
+}
+.form-container .login-container .form-holder{
+    border: 1px solid #eee;
+}
+.form-container .login-container .submit-btn{
+    margin-bottom:10px;
+}
+.form-container a{
+    font-size:13px;
+
+    /* to remove the underline */
+    text-decoration: none;
+    color:#a75139;
+}
+.form-container a:hover{
+    text-decoration: underline;
+}

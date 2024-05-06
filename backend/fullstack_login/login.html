@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Polyglot-Login/SignUp</title>
+</head>
+<body>
+    <div class="form-container">
+        <!-- SIGN UP -->
+        <!-- how to write div with 2 classes  -->
+        <div class="signup-container slide-up">
+            <h2 class="form-title" id="signup">Sign Up</h2>
+
+            <!-- "#" specifies the url to which the form will be submitted when user clicks submit button -->
+            <form accept="#">
+                <div class="form-holder">
+                    <input type="text" class="input" placeholder="Name">
+                    <input type="email" class="input" placeholder="Email">
+                    <input type="password" class="input" placeholder="Password">
+                </div>
+                <button class="submit-btn"  onclick="alertMessage()">Sign Up</button>
+            </form>
+        </div>
+         <!-- LOGIN -->
+    <div class="login-container slide-up">
+        <div class="login-wrapper">
+            <h2 class="form-title" id="login">Log In</h2>
+            <form accept="#">
+                <div class="form-holder">
+                    <input type="text" class="input" placeholder="Name">
+                    <input type="email" class="input" placeholder="Email">
+                    <input type="password" class="input" placeholder="Password">
+                </div>
+                <button class="submit-btn" onclick="alertMessage()">Log In</button>
+            </form>
+            <a href="#" class="forgot-password">Forgot-password?</a>
+        </div>
+    </div>
+    </div>
+
+   
+
+   <script>
+    function alertMessage(){
+    alert("Data saved succesfully");
+}
+   </script>
+    <script src="login.js"></script>
+</body>
+</html>
